@@ -3,16 +3,17 @@ import logoUrl from '../assets/logo.svg'
 import upload from '../assets/upload.svg'
 import generator from '../assets/generator.svg'
 import history from '../assets/history.svg'
-import { EmptyPage } from '../pages/empty-page'
+import { EmptyPage } from '../pages/empty'
 import classNames from 'classnames'
 import styles from './index.module.css'
+import { AnalyticPage } from '../pages/analytic'
 
 const links = ['/generator', '/history', '/']
 
 export const App = () => {
     const { pathname } = useLocation()
 
-    const activeTabIdx = links.findIndex((link) => pathname.match(link))
+    const activeTabIdx = links.findIndex((link) => link === pathname)
 
     return (
         <div>
@@ -55,7 +56,7 @@ export const App = () => {
 
             <main className={styles.content}>
                 <Routes>
-                    <Route path="/" element={<div>CSV Аналитик</div>} />
+                    <Route path="/" element={<AnalyticPage />} />
                     <Route path="/generator" element={<div>CSV Генератор</div>} />
                     <Route path="/history" element={<div>История</div>} />
                     <Route path="*" element={<EmptyPage />} />

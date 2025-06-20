@@ -1,0 +1,90 @@
+.button {
+    width: max-content;
+    padding: 8px 16px;
+    border-radius: 16px;
+    border: none;
+    font-weight: 500;
+    font-size: 35px;
+    cursor: pointer;
+
+    color: black;
+    background-color: #2ae881;
+
+    display: flex;
+    align-items: center;
+}
+
+.button:hover {
+    background-color: #2ae880b0;
+}
+
+.button:active {
+    background-color: #2ae880;
+}
+
+.disabled {
+    cursor: not-allowed;
+    background-color: #c0c0c0;
+    color: #787878;
+}
+
+.disabled:hover {
+    background-color: #c0c0c0;
+}
+
+.disabled:active {
+    background-color: #c0c0c0;
+}
+
+.clear {
+    padding: 8px;
+    background-color: black;
+    color: white;
+}
+
+.clear:hover {
+    background-color: rgba(0, 0, 0, 0.585);
+}
+
+.clear:active {
+    background-color: black;
+}
+
+.purple {
+    background-color: #cb81ff;
+    color: black;
+}
+
+.purple:hover {
+    background-color: #cb81ff;
+}
+
+.purple:active {
+    background-color: #cb81ff;
+}
+
+.completed {
+    background-color: #d4fae6;
+    color: black;
+}
+
+.completed:hover {
+    background-color: #d4fae6;
+}
+
+.completed:active {
+    background-color: #d4fae6;
+}
+
+.error {
+    background-color: #ff5f00;
+    color: white;
+}
+
+.error:hover {
+    background-color: #ff5f00;
+}
+
+.error:active {
+    background-color: #ff5f00;
+}
