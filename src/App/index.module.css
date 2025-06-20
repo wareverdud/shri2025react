@@ -1,0 +1,52 @@
+.navbar {
+    padding: 16px;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 80px;
+}
+
+.title {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+}
+
+.title p {
+    background-color: #cb81ff;
+    color: black;
+    height: max-content;
+    width: max-content;
+    padding: 6px;
+    font-size: 30px;
+}
+
+.links {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    font-size: 30px;
+}
+
+.link {
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.link:visited,
+.link:focus,
+.link:active {
+    text-decoration: none;
+    color: inherit;
+}
+
+.active {
+    padding-bottom: 4px;
+    border-bottom: 2px solid #000000;
+}
+
+.content {
+    padding: 16px;
+}
