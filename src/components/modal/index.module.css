@@ -13,6 +13,9 @@
 }
 
 .modalWindow {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-right: 10px;
     background-color: white;
     padding: 24px;
     border-radius: 16px;
