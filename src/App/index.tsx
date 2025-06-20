@@ -7,6 +7,7 @@ import { EmptyPage } from '../pages/empty'
 import classNames from 'classnames'
 import styles from './index.module.css'
 import { AnalyticPage } from '../pages/analytic'
+import { HistoryPage } from '../pages/history'
 
 const links = ['/generator', '/history', '/']
 
@@ -58,7 +59,7 @@ export const App = () => {
                 <Routes>
                     <Route path="/" element={<AnalyticPage />} />
                     <Route path="/generator" element={<div>CSV Генератор</div>} />
-                    <Route path="/history" element={<div>История</div>} />
+                    <Route path="/history" element={<HistoryPage />} />
                     <Route path="*" element={<EmptyPage />} />
                 </Routes>
             </main>

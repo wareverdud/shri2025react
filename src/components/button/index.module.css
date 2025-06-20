@@ -37,7 +37,6 @@
 }
 
 .clear {
-    padding: 8px;
     background-color: black;
     color: white;
 }
@@ -51,6 +50,7 @@
 }
 
 .purple {
+    border-radius: 10px;
     background-color: #cb81ff;
     color: black;
 }
@@ -64,6 +64,7 @@
 }
 
 .completed {
+    border-radius: 10px;
     background-color: #d4fae6;
     color: black;
 }
@@ -77,6 +78,7 @@
 }
 
 .error {
+    border-radius: 10px;
     background-color: #ff5f00;
     color: white;
 }
@@ -87,4 +89,9 @@
 
 .error:active {
     background-color: #ff5f00;
+}
+
+.showIcon {
+    padding: 8px;
+    border-radius: 10px;
 }

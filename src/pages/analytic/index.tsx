@@ -119,6 +119,7 @@ export const AnalyticPage = () => {
                                     <Button purple>{file.name}</Button>
                                     <Button
                                         clear
+                                        showIcon
                                         onClick={() => {
                                             clearFile()
                                             if (inputRef.current) {
@@ -136,6 +137,7 @@ export const AnalyticPage = () => {
                                     <Button completed>{file.name}</Button>
                                     <Button
                                         clear
+                                        showIcon
                                         onClick={() => {
                                             clearFile()
                                             if (inputRef.current) {
@@ -153,6 +155,7 @@ export const AnalyticPage = () => {
                                     <Button error>{file.name}</Button>
                                     <Button
                                         clear
+                                        showIcon
                                         onClick={() => {
                                             clearFile()
                                             if (inputRef.current) {
@@ -181,9 +184,24 @@ export const AnalyticPage = () => {
                                     },
                                     (obj) => {
                                         setIsCompleted(true)
-                                        addRecord({ ...obj, date: getCurrentDate() })
+                                        addRecord({
+                                            entry: obj,
+                                            name: file.name,
+                                            date: getCurrentDate(),
+                                            success: true,
+                                            id: Date.now(),
+                                        })
                                     },
-                                ).catch(() => setIsError(true))
+                                ).catch(() => {
+                                    setIsError(true)
+                                    addRecord({
+                                        name: file.name,
+                                        date: getCurrentDate(),
+                                        success: false,
+                                        id: Date.now(),
+                                        entry: null,
+                                    })
+                                })
                             }
                         }}
                     >

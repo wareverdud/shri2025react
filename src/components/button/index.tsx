@@ -9,6 +9,7 @@ export const Button = ({
     purple = false,
     completed = false,
     error = false,
+    showIcon = false,
     onClick,
 }: {
     children?: React.ReactNode
@@ -17,6 +18,7 @@ export const Button = ({
     purple?: boolean
     completed?: boolean
     error?: boolean
+    showIcon?: boolean
     onClick?: React.MouseEventHandler<HTMLButtonElement>
 }) => {
     return (
@@ -28,13 +30,14 @@ export const Button = ({
                 purple && styles.purple,
                 completed && styles.completed,
                 error && styles.error,
+                showIcon && styles.showIcon,
             )}
             type="button"
             disabled={disabled}
             onClick={onClick}
         >
             {children}
-            {clear && <img src={xMark} alt="" />}
+            {clear && showIcon && <img src={xMark} alt="" />}
         </button>
     )
 }

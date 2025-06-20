@@ -9,3 +9,11 @@ export interface IStats {
     big_spent_civ: string
     less_spent_civ: string
 }
+
+export interface IRecord {
+    name: string
+    date: string
+    success: boolean
+    id: number
+    entry: IStats | null
+}

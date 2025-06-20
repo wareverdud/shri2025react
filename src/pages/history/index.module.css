@@ -1,0 +1,78 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.history {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 40px;
+}
+
+.rowOutline {
+    display: flex;
+    gap: 40px;
+    align-items: center;
+}
+
+.row {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 30px;
+    background-color: #cb81ff;
+    border-radius: 40px;
+    padding: 16px 20px;
+    cursor: pointer;
+}
+
+.rowDisabled {
+    cursor: not-allowed;
+}
+
+.name {
+    display: flex;
+    gap: 5px;
+    align-items: center;
+}
+
+.status {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.faint {
+    opacity: 0.3;
+}
+
+.trashWrapper {
+    background-color: white;
+    padding: 16px 20px;
+    border-radius: 20px;
+    cursor: pointer;
+    border: none;
+}
+
+.trashWrapper:hover {
+    background-color: rgba(255, 255, 255, 0.762);
+}
+
+.trashWrapper:active {
+    background-color: white;
+}
+
+.empty {
+    color: #cb81ff;
+    font-size: 30px;
+    margin-bottom: 40px;
+}
+
+.buttons {
+    display: flex;
+    gap: 20px;
+}

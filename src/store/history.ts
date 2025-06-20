@@ -1,10 +1,11 @@
 import { create } from 'zustand'
-import type { IStats } from './types'
+import type { IRecord } from './types'
 
 interface RecordsStore {
-    records: Array<IStats>
-    addRecord: (record: IStats) => void
+    records: Array<IRecord>
+    addRecord: (record: IRecord) => void
     clearHistory: () => void
+    deleteRecord: (id: number) => void
 }
 
 const getInitialRecords = () => {
@@ -23,8 +24,16 @@ export const useRecordsStore = create<RecordsStore>((set) => ({
             localStorage.setItem('records', JSON.stringify(updatedRecords))
             return { records: updatedRecords }
         }),
-    clearHistory: () => {
-        localStorage.setItem('records', JSON.stringify([]))
-        return { records: [] }
-    },
+    clearHistory: () =>
+        set(() => {
+            localStorage.setItem('records', JSON.stringify([]))
+            return { records: [] }
+        }),
+
+    deleteRecord: (id) =>
+        set((state) => {
+            const updatedRecords = state.records.filter((record) => record.id !== id)
+            localStorage.setItem('records', JSON.stringify(updatedRecords))
+            return { records: updatedRecords }
+        }),
 }))
