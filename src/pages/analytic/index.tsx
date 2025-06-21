@@ -1,13 +1,13 @@
 import { useRef, useState } from 'react'
 import classNames from 'classnames'
 import styles from './index.module.css'
-import { Button } from '../../components/button'
-import { useFileStore } from '../../store/file'
-import { sendFormData } from '../../api'
-import { Stats } from '../../components/stats'
-import { useRecordsStore } from '../../store/history'
-import { getCurrentDate } from '../../utils/getDate'
-import loader from '../../assets/loading.svg'
+import loader from '@/assets/loading.svg'
+import { useFileStore } from '@/store/file'
+import { useRecordsStore } from '@/store/history'
+import { Button } from '@/components/button'
+import { sendFormData } from '@/api'
+import { getCurrentDate } from '@/utils/getDate'
+import { Stats } from '@/components/stats'
 
 export const AnalyticPage = () => {
     const {

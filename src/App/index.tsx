@@ -1,14 +1,14 @@
 import { Route, Link, Routes, useLocation } from 'react-router-dom'
-import logoUrl from '../assets/logo.svg'
-import upload from '../assets/upload.svg'
-import generator from '../assets/generator.svg'
-import history from '../assets/history.svg'
-import { EmptyPage } from '../pages/empty'
+import logoUrl from '@/assets/logo.svg'
+import upload from '@/assets/upload.svg'
+import generator from '@/assets/generator.svg'
+import history from '@/assets/history.svg'
 import classNames from 'classnames'
 import styles from './index.module.css'
-import { AnalyticPage } from '../pages/analytic'
-import { HistoryPage } from '../pages/history'
-import { GeneratorPage } from '../pages/generator'
+import { AnalyticPage } from '@/pages/analytic'
+import { EmptyPage } from '@/pages/empty'
+import { GeneratorPage } from '@/pages/generator'
+import { HistoryPage } from '@/pages/history'
 
 const links = ['/generator', '/history', '/']
 

@@ -1,9 +1,9 @@
 import { createPortal } from 'react-dom'
 import styles from './index.module.css'
-import type { IStats } from '../../store/types'
+import { statsMap } from '@/constants'
+import type { IStats } from '@/store/types'
+import { convertDate } from '@/utils/convertDate'
 import { Button } from '../button'
-import { statsMap } from '../../constants'
-import { convertDate } from '../../utils/convertDate'
 
 export const Modal = ({ record, close }: { record: IStats; close: () => void }) => {
     return createPortal(

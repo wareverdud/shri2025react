@@ -1,7 +1,7 @@
-import { statsMap } from '../../constants'
-import { useFileStore } from '../../store/file'
-import { convertDate } from '../../utils/convertDate'
+import { useFileStore } from '@/store/file'
 import styles from './index.module.css'
+import { statsMap } from '@/constants'
+import { convertDate } from '@/utils/convertDate'
 
 export const Stats = () => {
     const { stats, isError } = useFileStore()

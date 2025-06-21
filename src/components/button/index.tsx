@@ -1,6 +1,6 @@
 import classNames from 'classnames'
 import styles from './index.module.css'
-import xMark from '../../assets/x-mark.svg'
+import xMark from '@/assets/x-mark.svg'
 
 export const Button = ({
     children,

@@ -1,15 +1,15 @@
-import { Button } from '../../components/button'
-import { useRecordsStore } from '../../store/history'
 import styles from './index.module.css'
 import { useNavigate } from 'react-router-dom'
-import file from '../../assets/file.svg'
-import smile from '../../assets/smile.svg'
-import sad from '../../assets/sad.svg'
-import trash from '../../assets/trash.svg'
+import file from '@/assets/file.svg'
+import smile from '@/assets/smile.svg'
+import sad from '@/assets/sad.svg'
+import trash from '@/assets/trash.svg'
 import classNames from 'classnames'
 import { useState } from 'react'
-import { Modal } from '../../components/modal'
-import type { IStats } from '../../store/types'
+import { Modal } from '@/components/modal'
+import { useRecordsStore } from '@/store/history'
+import type { IStats } from '@/store/types'
+import { Button } from '@/components/button'
 
 export const HistoryPage = () => {
     const [record, setRecord] = useState<IStats | null>(null)

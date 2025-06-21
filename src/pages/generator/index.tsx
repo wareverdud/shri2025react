@@ -1,8 +1,8 @@
 import { useState } from 'react'
-import { Button } from '../../components/button'
 import styles from './index.module.css'
-import { generateFile } from '../../api'
-import loader from '../../assets/loading.svg'
+import loader from '@/assets/loading.svg'
+import { generateFile } from '@/api'
+import { Button } from '@/components/button'
 
 export const GeneratorPage = () => {
     const [isLoading, setIsLoading] = useState(false)
