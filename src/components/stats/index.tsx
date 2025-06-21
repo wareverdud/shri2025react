@@ -4,9 +4,9 @@ import { convertDate } from '../../utils/convertDate'
 import styles from './index.module.css'
 
 export const Stats = () => {
-    const { stats, isError, isLoading } = useFileStore()
+    const { stats, isError } = useFileStore()
 
-    const show = stats && !isError && !isLoading
+    const show = stats && !isError
 
     return (
         <>

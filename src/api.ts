@@ -1,11 +1,11 @@
 const BASE_URL = 'http://localhost:3000'
 
-export async function sendFormData(
+export const sendFormData = async (
     file: File,
     rows: number,
     onData: (obj: any) => void,
     onComplete: (obj: any) => void,
-) {
+) => {
     const url = new URL(`${BASE_URL}/aggregate`)
     url.searchParams.set('rows', String(rows))
 
@@ -33,7 +33,7 @@ export async function sendFormData(
             break
         }
         buffer += decoder.decode(value, { stream: true })
-        const lines = buffer.split(/\r?\n/)
+        const lines = buffer.split('\n')
         buffer = lines.pop() || ''
         for (const line of lines) {
             if (!line.trim()) {
@@ -44,6 +44,7 @@ export async function sendFormData(
             onData(obj)
         }
     }
+
     if (buffer.trim()) {
         const obj = JSON.parse(buffer)
         lastObj = obj
@@ -51,4 +52,28 @@ export async function sendFormData(
     }
 
     onComplete(lastObj)
+}
+
+export const generateFile = async () => {
+    const url = new URL(`${BASE_URL}/report`)
+    url.searchParams.set('size', String(0.01))
+
+    const response = await fetch(url.toString(), { method: 'GET' })
+
+    if (!response.ok || !response.body) {
+        throw new Error()
+    }
+
+    const blob = await response.blob()
+
+    const urlBlob = URL.createObjectURL(blob)
+    const a = document.createElement('a')
+    a.href = urlBlob
+    a.download = 'report.csv'
+    document.body.appendChild(a)
+    a.click()
+    setTimeout(() => {
+        document.body.removeChild(a)
+        URL.revokeObjectURL(urlBlob)
+    }, 0)
 }
