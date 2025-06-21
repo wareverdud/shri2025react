@@ -33,9 +33,9 @@ export const HistoryPage = () => {
                                 }
                             }}
                         >
-                            <div className={styles.name}>
+                            <div className={styles.nameColumn}>
                                 <img src={file} alt="" />
-                                <p>{record.name}</p>
+                                <p className={styles.name}>{record.name}</p>
                             </div>
 
                             <p>{record.date}</p>

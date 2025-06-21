@@ -12,47 +12,43 @@ export async function sendFormData(
     const formData = new FormData()
     formData.append('file', file)
 
-    try {
-        const response = await fetch(url.toString(), {
-            method: 'POST',
-            body: formData,
-        })
+    const response = await fetch(url.toString(), {
+        method: 'POST',
+        body: formData,
+    })
 
-        if (!response.ok || !response.body) {
-            return
+    if (!response.ok || !response.body) {
+        throw new Error()
+    }
+
+    let lastObj: any | null = null
+
+    const reader = response.body.getReader()
+    const decoder = new TextDecoder('utf-8')
+    let buffer = ''
+
+    while (true) {
+        const { done, value } = await reader.read()
+        if (done) {
+            break
         }
-
-        let lastObj: any | null = null
-
-        const reader = response.body.getReader()
-        const decoder = new TextDecoder('utf-8')
-        let buffer = ''
-
-        while (true) {
-            const { done, value } = await reader.read()
-            if (done) {
-                break
+        buffer += decoder.decode(value, { stream: true })
+        const lines = buffer.split(/\r?\n/)
+        buffer = lines.pop() || ''
+        for (const line of lines) {
+            if (!line.trim()) {
+                continue
             }
-            buffer += decoder.decode(value, { stream: true })
-            const lines = buffer.split(/\r?\n/)
-            buffer = lines.pop() || ''
-            for (const line of lines) {
-                if (!line.trim()) {
-                    continue
-                }
-                const obj = JSON.parse(line)
-                lastObj = obj
-                onData(obj)
-            }
-        }
-        if (buffer.trim()) {
-            const obj = JSON.parse(buffer)
+            const obj = JSON.parse(line)
             lastObj = obj
             onData(obj)
         }
-
-        onComplete(lastObj)
-    } catch (err) {
-        throw err
     }
+    if (buffer.trim()) {
+        const obj = JSON.parse(buffer)
+        lastObj = obj
+        onData(obj)
+    }
+
+    onComplete(lastObj)
 }

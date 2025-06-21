@@ -20,14 +20,23 @@
 
 .row {
     width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
     font-size: 30px;
     background-color: #cb81ff;
     border-radius: 40px;
     padding: 16px 20px;
     cursor: pointer;
+
+    display: grid;
+    align-items: center;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    text-wrap: nowrap;
+}
+
+.nameColumn {
+    display: flex;
+    gap: 5px;
+    align-items: center;
 }
 
 .rowDisabled {
@@ -35,9 +44,15 @@
 }
 
 .name {
-    display: flex;
-    gap: 5px;
-    align-items: center;
+    max-width: 300px;
+    overflow: auto;
+
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+.name::-webkit-scrollbar {
+    display: none;
 }
 
 .status {

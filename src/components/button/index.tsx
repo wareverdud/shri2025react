@@ -4,6 +4,7 @@ import xMark from '../../assets/x-mark.svg'
 
 export const Button = ({
     children,
+    className,
     clear = false,
     disabled = false,
     purple = false,
@@ -13,6 +14,7 @@ export const Button = ({
     onClick,
 }: {
     children?: React.ReactNode
+    className?: string
     clear?: boolean
     disabled?: boolean
     purple?: boolean
@@ -31,6 +33,7 @@ export const Button = ({
                 completed && styles.completed,
                 error && styles.error,
                 showIcon && styles.showIcon,
+                className,
             )}
             type="button"
             disabled={disabled}

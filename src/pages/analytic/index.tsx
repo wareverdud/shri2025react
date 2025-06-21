@@ -7,6 +7,7 @@ import { sendFormData } from '../../api'
 import { Stats } from '../../components/stats'
 import { useRecordsStore } from '../../store/history'
 import { getCurrentDate } from '../../utils/getDate'
+import loader from '../../assets/loading.svg'
 
 export const AnalyticPage = () => {
     const {
@@ -32,10 +33,9 @@ export const AnalyticPage = () => {
         }
         const newFile = e.dataTransfer.files?.[0]
         if (newFile) {
-            if (newFile.type !== 'text/csv') {
-                setIsError(true)
+            if (newFile.type === 'text/csv') {
+                addFile(newFile)
             }
-            addFile(newFile)
         }
     }
 
@@ -45,9 +45,6 @@ export const AnalyticPage = () => {
         }
         const newFile = e.target.files?.[0]
         if (newFile) {
-            if (newFile.type !== 'text/csv') {
-                setIsError(true)
-            }
             addFile(newFile)
         }
     }
@@ -92,6 +89,7 @@ export const AnalyticPage = () => {
                     <input
                         ref={inputRef}
                         type="file"
+                        accept=".csv"
                         className={styles.fileInput}
                         onChange={handleFileSelect}
                     />
@@ -109,7 +107,9 @@ export const AnalyticPage = () => {
                         )}
                         {file && isLoading && (
                             <>
-                                <Button purple>{file.name}</Button>
+                                <Button purple className={styles.loaderButton}>
+                                    <img src={loader} alt="" />
+                                </Button>
                                 <p className={styles.hintText}>идёт парсинг файла</p>
                             </>
                         )}
