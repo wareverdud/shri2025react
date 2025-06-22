@@ -28,24 +28,3 @@
     flex-direction: column;
     gap: 13px;
 }
-
-.element {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background-color: #eacdff;
-    border-radius: 24px;
-    height: 117.5px;
-    min-height: 117.5px;
-}
-
-.element p {
-    font-weight: 500;
-    font-size: 40px;
-}
-
-.element span {
-    font-size: 20px;
-}

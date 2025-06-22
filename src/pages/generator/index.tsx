@@ -1,8 +1,8 @@
 import { useState } from 'react'
 import styles from './index.module.css'
-import loader from '@/assets/loading.svg'
 import { generateFile } from '@/api'
 import { Button } from '@/components/button'
+import { Loader } from '@/components/loader'
 
 export const GeneratorPage = () => {
     const [isLoading, setIsLoading] = useState(false)
@@ -28,7 +28,7 @@ export const GeneratorPage = () => {
             {isLoading && (
                 <>
                     <Button purple className={styles.loaderButton}>
-                        <img src={loader} alt="" />
+                        <Loader />
                     </Button>
                     <span>идёт процесс генерации</span>
                 </>

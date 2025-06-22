@@ -1,13 +1,13 @@
 import { useRef, useState } from 'react'
 import classNames from 'classnames'
 import styles from './index.module.css'
-import loader from '@/assets/loading.svg'
 import { useFileStore } from '@/store/file'
 import { useRecordsStore } from '@/store/history'
 import { Button } from '@/components/button'
 import { sendFormData } from '@/api'
 import { getCurrentDate } from '@/utils/getDate'
 import { Stats } from '@/components/stats'
+import { Loader } from '@/components/loader'
 
 export const AnalyticPage = () => {
     const {
@@ -46,6 +46,49 @@ export const AnalyticPage = () => {
         const newFile = e.target.files?.[0]
         if (newFile) {
             addFile(newFile)
+        }
+    }
+
+    const submit = () => {
+        if (file) {
+            setIsLoading(true)
+            sendFormData(
+                file,
+                10000,
+                (obj) => {
+                    setStats(obj)
+                },
+                (obj) => {
+                    setIsCompleted(true)
+
+                    if (Object.entries(obj).some((entry) => entry[1] === null)) {
+                        addRecord({
+                            name: file.name,
+                            date: getCurrentDate(),
+                            success: false,
+                            id: Date.now(),
+                            entry: null,
+                        })
+                    } else {
+                        addRecord({
+                            entry: obj,
+                            name: file.name,
+                            date: getCurrentDate(),
+                            success: true,
+                            id: Date.now(),
+                        })
+                    }
+                },
+            ).catch(() => {
+                setIsError(true)
+                addRecord({
+                    name: file.name,
+                    date: getCurrentDate(),
+                    success: false,
+                    id: Date.now(),
+                    entry: null,
+                })
+            })
         }
     }
 
@@ -108,7 +151,7 @@ export const AnalyticPage = () => {
                         {file && isLoading && (
                             <>
                                 <Button purple className={styles.loaderButton}>
-                                    <img src={loader} alt="" />
+                                    <Loader />
                                 </Button>
                                 <p className={styles.hintText}>идёт парсинг файла</p>
                             </>
@@ -171,40 +214,7 @@ export const AnalyticPage = () => {
                 </div>
 
                 {!isLoading && !isCompleted && !isError && (
-                    <Button
-                        disabled={!file}
-                        onClick={() => {
-                            if (file) {
-                                setIsLoading(true)
-                                sendFormData(
-                                    file,
-                                    10000,
-                                    (obj) => {
-                                        setStats(obj)
-                                    },
-                                    (obj) => {
-                                        setIsCompleted(true)
-                                        addRecord({
-                                            entry: obj,
-                                            name: file.name,
-                                            date: getCurrentDate(),
-                                            success: true,
-                                            id: Date.now(),
-                                        })
-                                    },
-                                ).catch(() => {
-                                    setIsError(true)
-                                    addRecord({
-                                        name: file.name,
-                                        date: getCurrentDate(),
-                                        success: false,
-                                        id: Date.now(),
-                                        entry: null,
-                                    })
-                                })
-                            }
-                        }}
-                    >
+                    <Button disabled={!file} onClick={submit}>
                         Отправить
                     </Button>
                 )}

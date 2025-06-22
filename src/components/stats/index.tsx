@@ -1,8 +1,7 @@
 import { useFileStore } from '@/store/file'
 import styles from './index.module.css'
 import { statsMap } from '@/constants'
-import { convertDate } from '@/utils/convertDate'
-import { checkNumber } from '@/utils/checkNumber'
+import { StatisticElement } from '../statisticElement'
 
 export const Stats = () => {
     const { stats, isError } = useFileStore()
@@ -15,15 +14,7 @@ export const Stats = () => {
             {show && (
                 <div className={styles.container}>
                     {statsMap.map((item) => (
-                        <div className={styles.element} key={item.id}>
-                            {item.type === 'date' && <p>{convertDate(String(stats?.[item.id]))}</p>}
-                            {item.type === 'number' && checkNumber(stats?.[item.id]) && (
-                                <p>{Math.round(Number(stats?.[item.id]))}</p>
-                            )}
-                            {item.type === 'string' && <p>{stats?.[item.id]}</p>}
-
-                            <span>{item.text}</span>
-                        </div>
+                        <StatisticElement key={item.id} item={item} stats={stats} white />
                     ))}
                 </div>
             )}

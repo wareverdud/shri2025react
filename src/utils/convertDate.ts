@@ -1,8 +1,4 @@
-export function convertDate(dayOfYear: string) {
-    if (isNaN(Number(dayOfYear))) {
-        return ''
-    }
-
+export function convertDate(dayOfYear: number) {
     const months = [
         'января',
         'февраля',
