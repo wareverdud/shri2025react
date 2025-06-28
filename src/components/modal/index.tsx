@@ -13,7 +13,7 @@ export const Modal = ({ record, close }: { record: IStats; close: () => void }) 
                     <StatisticElement key={item.id} item={item} stats={record} />
                 ))}
             </div>
-            <Button clear showIcon onClick={close} />
+            <Button clear showIcon onClick={close} dataTestId="modal-close-button" />
         </div>,
         document.body,
     )

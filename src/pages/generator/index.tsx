@@ -14,6 +14,7 @@ export const GeneratorPage = () => {
             <p>Сгенерируйте готовый csv-файл нажатием одной кнопки</p>
             {!isLoading && !isCompleted && !isError && (
                 <Button
+                    dataTestId="generate-button"
                     onClick={() => {
                         setIsLoading(true)
                         generateFile()
@@ -38,6 +39,7 @@ export const GeneratorPage = () => {
                     <div className={styles.clearableButtonContainer}>
                         <Button completed>Done!</Button>
                         <Button
+                            dataTestId="clear-button"
                             clear
                             showIcon
                             onClick={() => {
@@ -55,6 +57,7 @@ export const GeneratorPage = () => {
                     <div className={styles.clearableButtonContainer}>
                         <Button error>Ошибка</Button>
                         <Button
+                            dataTestId="clear-button"
                             clear
                             showIcon
                             onClick={() => {

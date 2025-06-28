@@ -95,12 +95,13 @@ export const AnalyticPage = () => {
     return (
         <div className={styles.container}>
             <div className={styles.uploader}>
-                <p className={styles.title}>
+                <p className={styles.title} data-testid="analytic-title">
                     Загрузите <span>csv</span> файл и получите <span>полную информацию</span> о нём
                     за сверхнизкое время
                 </p>
 
                 <div
+                    data-testid="analytic-upload-space"
                     className={classNames(
                         styles.uploadSpace,
                         dragging && styles.dragging,
@@ -130,6 +131,7 @@ export const AnalyticPage = () => {
                     }}
                 >
                     <input
+                        data-testid="analytic-input"
                         ref={inputRef}
                         type="file"
                         accept=".csv"
@@ -161,6 +163,7 @@ export const AnalyticPage = () => {
                                 <div className={styles.clearableButtonContainer}>
                                     <Button purple>{file.name}</Button>
                                     <Button
+                                        dataTestId="analytic-clear-button"
                                         clear
                                         showIcon
                                         onClick={() => {
@@ -179,6 +182,7 @@ export const AnalyticPage = () => {
                                 <div className={styles.clearableButtonContainer}>
                                     <Button completed>{file.name}</Button>
                                     <Button
+                                        dataTestId="analytic-clear-button"
                                         clear
                                         showIcon
                                         onClick={() => {
@@ -197,6 +201,7 @@ export const AnalyticPage = () => {
                                 <div className={styles.clearableButtonContainer}>
                                     <Button error>{file.name}</Button>
                                     <Button
+                                        dataTestId="analytic-clear-button"
                                         clear
                                         showIcon
                                         onClick={() => {
@@ -214,7 +219,7 @@ export const AnalyticPage = () => {
                 </div>
 
                 {!isLoading && !isCompleted && !isError && (
-                    <Button disabled={!file} onClick={submit}>
+                    <Button dataTestId="analytic-submit-button" disabled={!file} onClick={submit}>
                         Отправить
                     </Button>
                 )}

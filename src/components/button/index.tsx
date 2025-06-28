@@ -12,6 +12,7 @@ export const Button = ({
     error = false,
     showIcon = false,
     onClick,
+    dataTestId,
 }: {
     children?: React.ReactNode
     className?: string
@@ -22,6 +23,7 @@ export const Button = ({
     error?: boolean
     showIcon?: boolean
     onClick?: React.MouseEventHandler<HTMLButtonElement>
+    dataTestId?: string
 }) => {
     return (
         <button
@@ -38,6 +40,7 @@ export const Button = ({
             type="button"
             disabled={disabled}
             onClick={onClick}
+            data-testid={dataTestId}
         >
             {children}
             {clear && showIcon && <img src={xMark} alt="" />}

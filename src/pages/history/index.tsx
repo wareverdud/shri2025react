@@ -61,6 +61,7 @@ export const HistoryPage = () => {
                         <button
                             className={styles.trashWrapper}
                             onClick={() => deleteRecord(record.id)}
+                            data-testid="delete-button"
                         >
                             <img src={trash} alt="" />
                         </button>
